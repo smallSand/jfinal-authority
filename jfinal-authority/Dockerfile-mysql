@@ -1,0 +1,7 @@
+FROM mysql
+
+ADD ./db.sql /mnt/db.sql
+
+RUN  mysql -h localhost -u root -p root < /mnt/db.sql 
+
+ 

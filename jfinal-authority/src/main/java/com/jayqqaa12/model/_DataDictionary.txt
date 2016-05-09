@@ -1,0 +1,89 @@
+Table: system_bug
+------------+---------------+------+-----+---------+---------
+ Field      | Type          | Null | Key | Default | Remarks 
+------------+---------------+------+-----+---------+---------
+ id         | INT(10)       | NO   | PRI |         |         
+ name       | VARCHAR(111)  | YES  |     |         |         
+ des        | TEXT(65535)   | YES  |     |         |         
+ type       | INT(10)       | YES  |     |         | 类别      
+ createdate | DATETIME(19)  | YES  |     |         |         
+ modifydate | TIMESTAMP(19) | YES  |     |         |         
+ status     | INT(10)       | YES  |     | 1       | 1.待解决 2. 已处理 3.忽略
+------------+---------------+------+-----+---------+---------
+
+Table: system_log
+-----------+--------------+------+-----+---------+---------
+ Field     | Type         | Null | Key | Default | Remarks 
+-----------+--------------+------+-----+---------+---------
+ id        | INT(10)      | NO   | PRI |         |         
+ uid       | INT(10)      | YES  |     |         |         
+ browser   | VARCHAR(255) | YES  |     |         |         
+ operation | INT(10)      | YES  |     | 0       | 1.访问 2 登录 3.添加 4. 编辑 5. 删除
+ from      | VARCHAR(255) | YES  |     |         | 来源 url  
+ ip        | VARCHAR(22)  | YES  |     |         |         
+ url       | VARCHAR(255) | YES  |     |         |         
+ date      | DATETIME(19) | YES  |     |         |         
+-----------+--------------+------+-----+---------+---------
+
+Table: system_res
+------------+---------------+------+-----+--------------+---------
+ Field      | Type          | Null | Key | Default      | Remarks 
+------------+---------------+------+-----+--------------+---------
+ id         | INT(10)       | NO   | PRI |              |         
+ pid        | INT(10)       | YES  |     |              |         
+ name       | VARCHAR(111)  | YES  |     |              |         
+ des        | VARCHAR(255)  | YES  |     |              |         
+ url        | VARCHAR(255)  | YES  |     |              |         
+ iconCls    | VARCHAR(255)  | YES  |     | am-icon-file |         
+ seq        | INT(10)       | YES  |     | 1            |         
+ type       | INT(10)       | YES  |     | 2            | 1 功能 2 权限
+ modifydate | TIMESTAMP(19) | YES  |     |              |         
+------------+---------------+------+-----+--------------+---------
+
+Table: system_role
+------------+--------------+------+-----+---------------+---------
+ Field      | Type         | Null | Key | Default       | Remarks 
+------------+--------------+------+-----+---------------+---------
+ id         | INT(10)      | NO   | PRI |               |         
+ name       | VARCHAR(55)  | YES  |     |               |         
+ des        | VARCHAR(55)  | YES  |     |               |         
+ seq        | INT(10)      | YES  |     | 1             |         
+ iconCls    | VARCHAR(55)  | YES  |     | status_online |         
+ pid        | INT(10)      | YES  |     | 0             |         
+ createdate | DATETIME(19) | YES  |     |               |         
+------------+--------------+------+-----+---------------+---------
+
+Table: system_role_res
+---------+---------+------+-----+---------+---------
+ Field   | Type    | Null | Key | Default | Remarks 
+---------+---------+------+-----+---------+---------
+ id      | INT(10) | NO   | PRI |         |         
+ res_id  | INT(10) | YES  |     |         |         
+ role_id | INT(10) | YES  |     |         |         
+---------+---------+------+-----+---------+---------
+
+Table: system_user
+------------+--------------+------+-----+------------------+---------
+ Field      | Type         | Null | Key | Default          | Remarks 
+------------+--------------+------+-----+------------------+---------
+ id         | INT(10)      | NO   | PRI |                  |         
+ name       | VARCHAR(55)  | YES  |     |                  |         
+ pwd        | VARCHAR(255) | YES  |     |                  |         
+ des        | VARCHAR(55)  | YES  |     |                  |         
+ status     | INT(10)      | YES  |     | 1                | #1 不在线 2.封号状态 
+ icon       | VARCHAR(255) | YES  |     | images/guest.jpg |         
+ email      | VARCHAR(222) | YES  |     |                  |         
+ createdate | DATETIME(19) | YES  |     |                  |         
+ phone      | INT(10)      | YES  |     |                  |         
+ salt2      | VARCHAR(55)  | YES  |     |                  |         
+------------+--------------+------+-----+------------------+---------
+
+Table: system_user_role
+---------+---------+------+-----+---------+---------
+ Field   | Type    | Null | Key | Default | Remarks 
+---------+---------+------+-----+---------+---------
+ id      | INT(10) | NO   | PRI |         |         
+ user_id | INT(10) | YES  |     |         |         
+ role_id | INT(10) | YES  |     |         |         
+---------+---------+------+-----+---------+---------
+
